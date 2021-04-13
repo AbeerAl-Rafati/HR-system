@@ -5,7 +5,7 @@ let form = document.getElementById('myForm');
 let table = document.getElementById('myTable');
 let totalDiv = document.getElementById('total');
 
-let counter=0;
+let totalS=0;
 
 function Employee(name, email, department)
 {
@@ -13,6 +13,7 @@ function Employee(name, email, department)
   this.email = email;
   this.department= department;
   this.salary= this.random(100,500);
+  totalS=totalS+ this.salary;
 
   Employee.all.push(this);
 
@@ -56,14 +57,14 @@ function eventHandler(event){
 
   let newEmployee = new Employee(name,email,departement);
   newEmployee.settingLS();
-  counter++;
+  
 
   // console.log(Employee.all);
 
 
 
   tableRender ();
-  salaryTotal();
+  
 
 }
 
@@ -134,7 +135,7 @@ function tableRender (){
 
   
   }
- 
+  salaryTotal();
 }
 
 tableRender ();
@@ -142,5 +143,5 @@ tableRender ();
 function salaryTotal(){
   let total = document.createElement('p');
   totalDiv.appendChild(total);
-  total.textContent = `Total =  ${counter}`;
+  total.textContent = `Total =  ${totalS}`;
 }
